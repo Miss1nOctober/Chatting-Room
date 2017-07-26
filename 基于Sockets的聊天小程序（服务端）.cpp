@@ -10,12 +10,11 @@ using namespace std;
 
 #pragma comment(lib,"ws2_32.lib")
 
-
+#define MAXBYTE 0xff
 const char *WELCOMTOCHATROOM = "You have connected to the Chatting Room";
 const char *MESSAGECOMED = "Meaasge Received：";
 const char *ANSWER = "Answer Back:";
 const char *WAIFORCLIENT = "Connecting.......";
-#define MAXBYTE 0xff
 
 int main()
 {
