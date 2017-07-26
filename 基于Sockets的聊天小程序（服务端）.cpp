@@ -1,4 +1,4 @@
-// »ùÓÚSocketsµÄÁÄÌìĞ¡³ÌĞò.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// åŸºäºSocketsçš„èŠå¤©å°ç¨‹åº.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -12,7 +12,7 @@ using namespace std;
 
 
 const char *WELCOMTOCHATROOM = "You have connected to the Chatting Room";
-const char *MESSAGECOMED = "Meaasge Received£º";
+const char *MESSAGECOMED = "Meaasge Receivedï¼š";
 const char *ANSWER = "Answer Back:";
 const char *WAIFORCLIENT = "Connecting.......";
 #define MAXBYTE 0xff
@@ -21,30 +21,30 @@ int main()
 {
 
 
-	BOOL bSuccess = FALSE;//ÊÇ·ñÖ´ĞĞ³É¹¦
+	BOOL bSuccess = FALSE;//æ˜¯å¦æ‰§è¡ŒæˆåŠŸ
 	int nError = ERROR;
 	SOCKET socketServ = INVALID_SOCKET;
 	SOCKET socketClient = INVALID_SOCKET;
 	do
 	{
 		WSADATA wsaData;
-		nError = WSAStartup(MAKEWORD(2, 2), &wsaData);//³õÊ¼»¯
+		nError = WSAStartup(MAKEWORD(2, 2), &wsaData);//åˆå§‹åŒ–
 		if (0 != nError)
 			break;
 
 
-		//´´½¨Socket
+		//åˆ›å»ºSocket
 		socketServ = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == socketServ)
 			break;
-		//´´½¨µØÖ·
+		//åˆ›å»ºåœ°å€
 		sockaddr_in addrServ = { 0 };
-		addrServ.sin_addr.S_un.S_addr = INADDR_ANY;//ËùÓĞipµØÖ·
+		addrServ.sin_addr.S_un.S_addr = INADDR_ANY;//æ‰€æœ‰ipåœ°å€
 		addrServ.sin_family = AF_INET;//ipv4
-		addrServ.sin_port = htons(10800);//¶Ë¿Ú
+		addrServ.sin_port = htons(10800);//ç«¯å£
 
 
-										 //°ó¶¨
+										 //ç»‘å®š
 		if (SOCKET_ERROR == bind(socketServ, (SOCKADDR*)&addrServ, sizeof(addrServ)))
 			break;
 		if (SOCKET_ERROR == listen(socketServ, SOMAXCONN))
@@ -57,7 +57,7 @@ int main()
 		int nAddrSize = sizeof(addrClient);
 
 
-		//µÈ´ı¿Í»§Á¬½Ó
+		//ç­‰å¾…å®¢æˆ·è¿æ¥
 		cout << WAIFORCLIENT << endl;
 		socketClient = accept(socketServ, (SOCKADDR*)&addrClient, &nAddrSize);
 		if (INVALID_SOCKET == socketClient)
@@ -77,7 +77,7 @@ int main()
 				cout << ANSWER;
 				cin >> szSendMessage;
 				if (SOCKET_ERROR == send(socketClient, szSendMessage, strlen(szSendMessage) + 1, 0))
-					break;//Ìø³öwhile
+					break;//è·³å‡ºwhile
 			}
 			else if (nResult == 0)
 			{
@@ -86,7 +86,7 @@ int main()
 			}
 			else
 			{
-				cout << "recv wrong£¡" << endl;
+				cout << "recv wrongï¼" << endl;
 				break;
 			}
 		}
