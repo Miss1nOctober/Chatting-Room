@@ -12,7 +12,7 @@ using namespace std;
 
 #define MAXBYTE 0xff
 const char *WELCOMTOCHATROOM = "You have connected to the Chatting Room";
-const char *MESSAGECOMED = "Meaasge Received：";
+const char *MESSAGECOMED = "Message Received：";
 const char *ANSWER = "Answer Back:";
 const char *WAIFORCLIENT = "Connecting.......";
 
